@@ -27,6 +27,7 @@
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    </head>
    <!-- body -->
    <body class="main-layout">
@@ -63,7 +64,7 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="about.html">About</a>
                               </li>
-                              <!-- <li class="nav-item">
+                               <li class="nav-item">
                                  <a class="nav-link" href="service.html">Service</a>
                               </li> -->
                               <!-- <li class="nav-item">
@@ -449,7 +450,7 @@
                         <h2>Contact Us</h2>
                      </div>
                   </div>
-                  <form id="request" class="main_form">
+                  <form id="submit-form" class="main_form">
                      <div class="row">
                         <div class="col-md-12 ">
                            <input class="contactus" placeholder="Name" type="type" name="Name"> 
@@ -461,7 +462,7 @@
                            <input class="contactus" placeholder="Email" type="type" name="Email"> 
                         </div>
                         <div class="col-md-12">
-                           <textarea class="textarea" placeholder="Message" type="type" Message="Name"></textarea>
+                           <input class="contactus" placeholder="Message" type="type" name="Message"> 
                         </div>
                         <div class="col-md-6 col-sm-6">
                            <button class="send_btn">Send</button>
@@ -510,5 +511,25 @@
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
+
+      <script>
+         $("#submit-form").submit((e)=>{
+             e.preventDefault()
+             $.ajax({
+                 url:"https://script.google.com/macros/s/AKfycbwIaNUsBZ-qZwyxUsjpeFwFhOsqVkOS7-L85MxI_QiP5kiysAfIKgTh-tfVgsn_ey1QUw/exec",
+                 data:$("#submit-form").serialize(),
+                 method:"post",
+                 success:function (response){
+                     alert("Form submitted successfully")
+                     window.location.reload()
+                     //window.location.href="https://google.com"
+                 },
+                 error:function (err){
+                     alert("Something Error")
+     
+                 }
+             })
+         })
+     </script>
    </body>
 </html>
